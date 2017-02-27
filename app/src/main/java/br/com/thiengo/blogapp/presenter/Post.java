@@ -15,6 +15,7 @@ public class Post implements Parcelable {
     private String sumario;
     private boolean ehFavorito;
 
+
     public long getId() {
         return id;
     }
@@ -62,10 +63,6 @@ public class Post implements Parcelable {
         return R.drawable.ic_nao_favorito;
     }
 
-
-    public Post() {}
-
-
     @Override
     public int describeContents() {
         return 0;
@@ -80,6 +77,8 @@ public class Post implements Parcelable {
         dest.writeByte(this.ehFavorito ? (byte) 1 : (byte) 0);
     }
 
+    public Post() {}
+
     protected Post(Parcel in) {
         this.id = in.readLong();
         this.titulo = in.readString();
@@ -88,7 +87,7 @@ public class Post implements Parcelable {
         this.ehFavorito = in.readByte() != 0;
     }
 
-    public static final Creator<Post> CREATOR = new Creator<Post>() {
+    public static final Parcelable.Creator<Post> CREATOR = new Parcelable.Creator<Post>() {
         @Override
         public Post createFromParcel(Parcel source) {
             return new Post(source);

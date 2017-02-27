@@ -2,6 +2,8 @@ package br.com.thiengo.blogapp.presenter;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -12,21 +14,13 @@ import br.com.thiengo.blogapp.view.PostsActivity;
 
 
 public class PresenterMain {
-    private static PresenterMain instance;
     private Model model;
     private PostsActivity activity;
     private ArrayList<Post> posts = new ArrayList<>();
 
 
-    private PresenterMain(){
+    public PresenterMain(){
         model = new Model( this );
-    }
-
-    public static PresenterMain getInstance(){
-        if( instance == null ){
-            instance = new PresenterMain();
-        }
-        return instance;
     }
 
     public void setActivity(PostsActivity activity){
@@ -37,12 +31,14 @@ public class PresenterMain {
         return activity;
     }
 
-    public void retrievePosts(Bundle savedInstanceState) {
-        if( savedInstanceState != null ){
-            posts = savedInstanceState.getParcelableArrayList( Post.POSTS_KEY );
-            return;
+    public void retrievePosts( Bundle instanceState ) {
+
+        if( instanceState != null ){
+            posts.addAll( (ArrayList) instanceState.getParcelableArrayList( Post.POSTS_KEY ) );
         }
-        model.retrievePosts();
+        else{
+            model.retrievePosts();
+        }
     }
 
     public void showProgressBar(boolean status) {

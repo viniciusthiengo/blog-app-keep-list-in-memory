@@ -1,6 +1,7 @@
 package br.com.thiengo.blogapp.view;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,14 +23,14 @@ public class PostsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        presenter = PresenterMain.getInstance();
+        presenter = new PresenterMain();
         presenter.setActivity( this );
-        intiViews();
+        initViews();
 
         presenter.retrievePosts( savedInstanceState );
     }
 
-    private void intiViews() {
+    private void initViews() {
         super.onStart();
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rv_posts);
@@ -47,12 +48,6 @@ public class PostsActivity extends AppCompatActivity {
         recyclerView.setAdapter( adapter );
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        outState.putParcelableArrayList(Post.POSTS_KEY, presenter.getPosts());
-        super.onSaveInstanceState(outState);
-    }
-
     public void updateListaRecycler(){
         adapter.notifyDataSetChanged();
     }
@@ -60,4 +55,11 @@ public class PostsActivity extends AppCompatActivity {
     public void showProgressBar( int visibilidade ){
         findViewById(R.id.pb_loading).setVisibility( visibilidade );
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putParcelableArrayList( Post.POSTS_KEY, presenter.getPosts() );
+        super.onSaveInstanceState(outState);
+    }
 }
+

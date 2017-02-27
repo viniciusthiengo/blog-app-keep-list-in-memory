@@ -1,7 +1,12 @@
 package br.com.thiengo.blogapp.model;
 
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestParams;
+
+import br.com.thiengo.blogapp.presenter.ManterListaFragment;
 import br.com.thiengo.blogapp.presenter.PresenterMain;
 
 
