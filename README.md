@@ -8,6 +8,14 @@ Projeto apresentado no **Capítulo 2** do livro, mais precisamente o capítulo "
 
 **Observação importante:** para o total entendimento do projeto é preciso ter em mãos o livro "Receitas Para Desenvolvedores Android" com o capítulo 2 já aberto, pois as explicações detalhadas de todo o projeto deste repositório estarão nesta parte do livro.
 
+### Lado Web
+
+Como projeto de auxílio ao projeto Android de exemplo há também um projeto Web.
+
+Como apresentado no capítulo 2 do livro: essa parte Web deve ser desenvolvida primeiro do que o lado Android, isso para ter o correto funcionamento do aplicativo de exemplo.
+
+O projeto Web pode ser acessado no seguinte repositório: [Blog App (lado Web)](https://github.com/viniciusthiengo/blog-app-keep-list-in-memory-web).
+
 ### AndroidX ⚠
 
 O projeto Android deste repositório, apesar de estar ainda atual e rodando sem problemas.
